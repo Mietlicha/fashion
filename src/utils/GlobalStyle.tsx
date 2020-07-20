@@ -8,6 +8,7 @@ const GlobalStyle = createGlobalStyle`
     html{
         font-size: 62.5%;
         box-sizing: border-box;
+        font-family: 'Josefin Sans';
     }
 `;
 

@@ -4,7 +4,7 @@ import GlobalTemplete from './utils/GlobalTemplete';
 function App() {
   return (
     <GlobalTemplete>
-      <div>Ania</div>
+      <h1>Ania</h1>
     </GlobalTemplete>
   );
 }
