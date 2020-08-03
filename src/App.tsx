@@ -1,12 +1,13 @@
 import React from 'react';
 import GlobalTemplete from './utils/GlobalTemplete';
+import TopBar from './components/molecules/TopBar';
 
-function App() {
+const App = () => {
   return (
     <GlobalTemplete>
-      <h1>Ania</h1>
+      <TopBar />
     </GlobalTemplete>
   );
-}
+};
 
 export default App;

@@ -1,29 +1,39 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 import { theme } from './theme';
 
+const { black, white, grey, contrast, greyLight, josefin } = theme;
+
 export const materialTheme = createMuiTheme({
   palette: {
     common: {
-      black: theme.black,
-      white: theme.white,
+      black: black,
+      white: white,
     },
     primary: {
-      light: theme.greyLight,
-      main: theme.grey,
-      dark: theme.contrast,
+      light: greyLight,
+      main: grey,
+      dark: contrast,
     },
     secondary: {
-      light: theme.greyLight,
-      main: theme.grey,
-      dark: theme.contrast,
-    },
-    info: {
-      light: theme.greyLight,
-      main: theme.grey,
-      dark: theme.contrast,
+      light: greyLight,
+      main: grey,
+      dark: contrast,
     },
   },
   typography: {
-    fontFamily: theme.josefin,
+    fontFamily: josefin,
+  },
+  overrides: {
+    MuiList: {
+      padding: {
+        paddingTop: 0,
+        paddingBottom: 0,
+      },
+    },
+    MuiPaper: {
+      root: {
+        marginTop: '25px',
+      },
+    },
   },
 });
