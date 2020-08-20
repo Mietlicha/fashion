@@ -1,14 +1,18 @@
 import React from 'react';
-import logo from '../../assets/images/logo.svg';
-import Img from '../atoms/Img';
+import styled from 'styled-components';
+import { ReactComponent as Logo } from '../../assets/icons/logo.svg';
 import MobileMenu from '../atoms/MobileMenu';
 import { Divider, Box, useMediaQuery } from '@material-ui/core';
 import MobileMenuIcons from '../molecules/MobileMenuIcons';
 import DesktopMenu from '../molecules/DesktopMenu';
+import { theme } from '../../utils/theme';
+
+const LogoBox = styled(Box)`
+  transform: scale(1.3);
+`;
 
 const Navigation: React.FC = () => {
-  const matches = useMediaQuery('(min-width:1000px)');
-
+  const matches = useMediaQuery(theme.xlargeUp);
   return (
     <Box
       pr={1}
@@ -28,9 +32,9 @@ const Navigation: React.FC = () => {
         py={2}
         height="92px"
       >
-        <Box mr={2}>
-          <Img alt="logo" src={logo} />
-        </Box>
+        <LogoBox mx={5}>
+          <Logo />
+        </LogoBox>
 
         <Box
           display="flex"

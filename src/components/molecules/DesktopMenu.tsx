@@ -9,48 +9,37 @@ const StyledListItem = styled(ListItem)`
   justify-content: center;
   flex-wrap: nowrap;
   width: inherit;
-  padding: 0 1vw;
-
-  @media (min-width: 1240px) {
-    padding: 0 2vw;
-  }
-
-  @media (min-width: 1620px) {
-    padding: 0 3vw;
-  }
+  padding: 0 3vw;
 `;
 
 const StyledLink = styled(Link)`
-  font-size: 1.6rem;
+  font-size: 2rem;
   font-weight: 300;
   color: ${({ theme }) => theme.black};
   font-family: ${({ theme }) => theme.josefin};
 
   &:hover {
-    border-bottom: 1px solid ${({ theme }) => theme.black};
+    border-bottom: 2px solid ${({ theme }) => theme.black};
     color: ${({ theme }) => theme.black};
+  }
+
+  &&.MuiLink-underlineHover:hover {
+    text-decoration: none;
   }
 `;
 
 const SubmenuLink = styled(StyledLink)`
-  padding: 1vw;
+  padding: 1rem 3vw;
+  font-size: 1.8rem;
 
   &:hover {
     border-bottom: none;
     color: ${({ theme }) => theme.contrast};
   }
 
-  @media (min-width: 1240px) {
-    padding: 2vw;
+  &&.MuiLink-underlineHover:hover {
+    text-decoration: underline;
   }
-
-  @media (min-width: 1620px) {
-    padding: 3vw;
-  }
-`;
-
-const GreyStyledLink = styled(StyledLink)`
-  color: ${({ theme }) => theme.secondary};
 `;
 
 const StyledList = styled(List)`
@@ -110,20 +99,15 @@ const DesktopMenu = () => {
 
   return (
     <>
-      {MENU.map(({ menus = [], secondary, to, name }, index) => (
+      {MENU.map(({ menus = [], to, name }, index) => (
         <React.Fragment key={index}>
           <Box
             position="relative"
-            m={index === 0 ? '0 auto' : 0}
             onMouseEnter={handleMouseEnter(index)}
             onMouseLeave={handleMouseLeave(index)}
           >
             <StyledListItem disableGutters={true} button>
-              {secondary ? (
-                <GreyStyledLink href={to}>{name}</GreyStyledLink>
-              ) : (
-                <StyledLink href={to}>{name}</StyledLink>
-              )}
+              <StyledLink href={to}>{name}</StyledLink>
             </StyledListItem>
             <HoverBox>
               <CollapseContainer
