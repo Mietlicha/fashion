@@ -4,7 +4,7 @@ import App from './App.tsx';
 import * as serviceWorker from './serviceWorker';
 import 'normalize.css';
 import { Provider } from 'react-redux';
-import appStore from './store/index';
+import appStore from './store/index.tsx';
 
 ReactDOM.render(
   <Provider store={appStore}>
