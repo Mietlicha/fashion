@@ -1,12 +1,20 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import setMobileMenuOpen from '../../store/actions/setMobileMenuOpen';
-import TextIcon from '../atoms/TextIcon';
-import { ReactComponent as wishListIcon } from '../../assets/icons/wishlist-heart.svg';
-import { ReactComponent as circleIcon } from '../../assets/icons/circle.svg';
-import { IconButton, Link } from '@material-ui/core';
+import { IconButton } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
 import DehazeIcon from '@material-ui/icons/Dehaze';
+import WishList from '../atoms/WishList';
+import Cart from '../atoms/Cart';
+import styled from 'styled-components';
+
+const StyledCloseIcon = styled(CloseIcon)`
+  transform: scale(2.2);
+`;
+
+const StyledDehazeIcon = styled(DehazeIcon)`
+  transform: scale(2.2);
+`;
 
 const MobileMenuIcons: React.FC = () => {
   const dispatch = useDispatch();
@@ -15,14 +23,10 @@ const MobileMenuIcons: React.FC = () => {
   );
   return (
     <>
-      <Link href="/#">
-        <TextIcon text="99" icon={wishListIcon} />
-      </Link>
-      <Link href="/#">
-        <TextIcon text="99" icon={circleIcon} />
-      </Link>
+      <WishList />
+      <Cart />
       <IconButton onClick={() => dispatch(setMobileMenuOpen(!openMenu))}>
-        {openMenu ? <CloseIcon /> : <DehazeIcon />}
+        {openMenu ? <StyledCloseIcon /> : <StyledDehazeIcon />}
       </IconButton>
     </>
   );

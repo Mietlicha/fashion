@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { MENU } from '../../utils/data';
 import { Box, ListItem, List, Link, Collapse } from '@material-ui/core';
-
-// import CartAndWishListLinks from '../atoms/CartAndWishListLinks';
+import Cart from '../atoms/Cart';
+import WishList from '../atoms/WishList';
 
 const StyledListItem = styled(ListItem)`
   justify-content: center;
   flex-wrap: nowrap;
   width: inherit;
-  padding: 0 3vw;
+  padding: 0 2vw;
 `;
 
 const StyledLink = styled(Link)`
@@ -130,8 +130,8 @@ const DesktopMenu = () => {
           </Box>
         </React.Fragment>
       ))}
-
-      {/* <CartAndWishListLinks /> */}
+      <WishList />
+      <Cart />
     </>
   );
 };
