@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-// import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { MENU } from '../../utils/data';
 import styled from 'styled-components';
 import {
@@ -12,8 +12,16 @@ import {
   Divider,
 } from '@material-ui/core';
 import { ReactComponent as ArrowMobile } from '../../assets/icons/arrowMobile.svg';
-import MobileMenuIcons from '../molecules/MobileMenuIcons';
 
+const StyledDrawer = styled(Drawer)`
+  .MuiDrawer-paperAnchorDockedLeft {
+    min-width: 310px;
+  }
+`;
+
+const StyledList = styled(List)`
+  padding-left: 50px;
+`;
 const StyledLink = styled(Link)`
   font-size: 1.6rem;
   font-family: ${({ theme }) => theme.josefin};
@@ -28,26 +36,9 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const SubMenuLink = styled(StyledLink)`
-  @media (min-width: 400px) {
-    line-height: 1.6;
-  }
-`;
-
-const StyledList = styled(List)`
-  @media (min-width: 400px) {
-    padding: 0 0 20px 0;
-  }
-`;
-
 const ArrowMobileUp = styled(ArrowMobile)`
   width: 30px;
   height: 30px;
-
-  @media (min-width: 400px) {
-    width: 50px;
-    height: 50px;
-  }
 `;
 
 const ArrowMobileDown = styled(ArrowMobileUp)`
@@ -65,55 +56,48 @@ const MobileMenu: React.FC = () => {
     }
   };
 
-  //   const openMenu = useSelector(
-  //     (state) => state.mobileMenuOpen.setMobileMenuOpen
-  //   );
+  const openMenu = useSelector(
+    (state) => state.mobileMenuOpen.setMobileMenuOpen
+  );
 
   return (
-    <>
-      <MobileMenuIcons />
-      <Drawer variant="persistent" anchor="left" open={true}>
-        {MENU.map(({ name, menus = [], to }, index) => (
-          <React.Fragment key={index}>
-            <Box py={0.8}>
-              <ListItem
-                disableGutters={true}
-                button
-                onClick={handleClick(index)}
-              >
-                <StyledLink href={to}>{name}</StyledLink>
-                <Box ml="auto">
-                  {menus.length === 0 ? (
-                    ''
-                  ) : openIndex === index ? (
-                    <ArrowMobileDown />
-                  ) : (
-                    <ArrowMobileUp />
-                  )}
-                </Box>
-              </ListItem>
-            </Box>
-            {openIndex !== index || menus.length === 0 ? <Divider /> : null}
-            <Collapse
-              in={openIndex === index && menus.length > 0}
-              timeout="auto"
-              unmountOnExit
-            >
-              <>
-                <StyledList>
-                  {menus.map(({ name, to }, i) => (
-                    <ListItem key={i} button>
-                      <SubMenuLink href={to}>{name}</SubMenuLink>
-                    </ListItem>
-                  ))}
-                </StyledList>
-                <Divider />
-              </>
-            </Collapse>
-          </React.Fragment>
-        ))}
-      </Drawer>
-    </>
+    <StyledDrawer variant="persistent" anchor="left" open={openMenu}>
+      {MENU.map(({ name, menus = [], to }, index) => (
+        <React.Fragment key={index}>
+          <Box py={0.5} px={5}>
+            <ListItem disableGutters={true} button onClick={handleClick(index)}>
+              <StyledLink href={to}>{name}</StyledLink>
+              <Box ml="auto">
+                {menus.length === 0 ? (
+                  ''
+                ) : openIndex === index ? (
+                  <ArrowMobileDown />
+                ) : (
+                  <ArrowMobileUp />
+                )}
+              </Box>
+            </ListItem>
+          </Box>
+          {openIndex !== index || menus.length === 0 ? <Divider /> : null}
+          <Collapse
+            in={openIndex === index && menus.length > 0}
+            timeout="auto"
+            unmountOnExit
+          >
+            <>
+              <StyledList>
+                {menus.map(({ name, to }, i) => (
+                  <ListItem key={i} button>
+                    <StyledLink href={to}>{name}</StyledLink>
+                  </ListItem>
+                ))}
+              </StyledList>
+              <Divider />
+            </>
+          </Collapse>
+        </React.Fragment>
+      ))}
+    </StyledDrawer>
   );
 };
 

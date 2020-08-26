@@ -35,5 +35,12 @@ export const materialTheme = createMuiTheme({
         marginTop: '25px',
       },
     },
+    MuiListItem: {
+      button: {
+        '&:hover': {
+          backgroundColor: 'none',
+        },
+      },
+    },
   },
 });

@@ -21,6 +21,7 @@ const StyledLink = styled(Link)`
   &:hover {
     border-bottom: 2px solid ${({ theme }) => theme.black};
     color: ${({ theme }) => theme.black};
+    background: transparent;
   }
 
   &&.MuiLink-underlineHover:hover {
