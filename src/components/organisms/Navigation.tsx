@@ -11,12 +11,14 @@ const LogoBox = styled(Box)`
   transform: scale(1.3);
 `;
 
+const BorderBox = styled(Box)`
+  border-bottom: 1px solid ${({ theme }) => theme.grey};
+`;
+
 const Navigation: React.FC = () => {
   const matches = useMediaQuery(theme.xlargeUp);
   return (
-    <Box
-      pr={1}
-      pl={2}
+    <BorderBox
       display="flex"
       flexDirection="column"
       alignItems="center"
@@ -30,7 +32,7 @@ const Navigation: React.FC = () => {
         justifyContent="space-between"
         width="100%"
         py={2}
-        height="92px"
+        height="70px"
       >
         <LogoBox mx={5}>
           <Logo />
@@ -47,7 +49,7 @@ const Navigation: React.FC = () => {
       </Box>
       {matches ? null : <Divider />}
       {matches ? null : <MobileMenu />}
-    </Box>
+    </BorderBox>
   );
 };
 

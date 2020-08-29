@@ -11,7 +11,7 @@ const mobileMenuOpen = (state = initialState, action) => {
     case SET_MOBILE_MENU_OPEN:
       return {
         ...state,
-        mobileMenuOpen: action.content,
+        setMobileMenuOpen: action.content,
       };
     default:
       return state;

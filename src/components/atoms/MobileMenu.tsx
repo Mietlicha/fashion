@@ -16,6 +16,7 @@ import { ReactComponent as ArrowMobile } from '../../assets/icons/arrowMobile.sv
 const StyledDrawer = styled(Drawer)`
   .MuiDrawer-paperAnchorDockedLeft {
     min-width: 310px;
+    top: 94px;
   }
 `;
 
@@ -65,7 +66,12 @@ const MobileMenu: React.FC = () => {
       {MENU.map(({ name, menus = [], to }, index) => (
         <React.Fragment key={index}>
           <Box py={0.5} px={5}>
-            <ListItem disableGutters={true} button onClick={handleClick(index)}>
+            <ListItem
+              disableGutters={true}
+              button
+              disableRipple={true}
+              onClick={handleClick(index)}
+            >
               <StyledLink href={to}>{name}</StyledLink>
               <Box ml="auto">
                 {menus.length === 0 ? (
@@ -87,7 +93,7 @@ const MobileMenu: React.FC = () => {
             <>
               <StyledList>
                 {menus.map(({ name, to }, i) => (
-                  <ListItem key={i} button>
+                  <ListItem key={i} button disableRipple={true}>
                     <StyledLink href={to}>{name}</StyledLink>
                   </ListItem>
                 ))}

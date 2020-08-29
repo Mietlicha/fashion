@@ -21,6 +21,11 @@ const StyledP = styled.p`
 
 const StyledLink = styled(Link)`
   position: relative;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.1);
+  }
 `;
 
 const WishList: React.FC = () => {
