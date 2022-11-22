@@ -22,7 +22,7 @@
     "react-gsap": "^2.2.1",
     "react-player": "^2.6.2",
     "react-redux": "^7.2.1",
-    "react-scripts": "^3.4.3",
+    "react-scripts": "^5.0.1",
     "react-scrollmagic": "^2.2.0",
     "react-use": "^15.3.4",
     "redux": "^4.0.5",
